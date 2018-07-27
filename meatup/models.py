@@ -14,7 +14,7 @@ class User(models.Model):
 
 class Event(models.Model):
     attendees = models.ForeignKey(User, on_delete=models.CASCADE, related_name='events')
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='events')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='my_events')
     event_name = models.CharField(max_length=100)
     event_datetime = models.CharField(max_length=100)
     event_location = models.CharField(max_length=100)
