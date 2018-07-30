@@ -6,3 +6,4 @@ from . import views
 urlpatterns = [
   path('event_homepage/', views.index, name='index'),
   ]
+
