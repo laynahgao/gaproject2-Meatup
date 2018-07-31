@@ -7,5 +7,10 @@ urlpatterns = [
   path('login/', views.login_view, name="login"),
   path('event_homepage/', views.index, name='index'),
   path('logout/', views.logout_view, name="logout"),
+  path('user/new', views.user_create, name='user_create'),
+  path('user/<int:id>/', views.user_info, name='user_info'),
+  path('user/<int:id>/edit', views.user_edit, name='user_edit'),
   ]
+
+
 
