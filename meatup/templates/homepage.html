@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<nav>
+    <div class="user-info">
+      {% if user.is_authenticated %}
+          Welcome, {{ user.username }}
+          <a href="{% url 'logout' %}">Signout</a>
+      {% else %}
+          <a href="{% url 'login' %}">Signin</a>
+      {% endif %}
+    </div>
+</nav>
+<h3>Event List</h3>
+<hr />
+{% for event in events %}
+  <a href="/{{ event.id }}">
+   <ul>
+    <li>
+      <p><strong>Event Name: </strong>{{ event.event_name }} &nbsp;
+         <strong>Event Owner: </strong>{{ event.owner }} &nbsp;
+         <strong>Event location: </strong>{{ event.event_location }}
+       </p>
+    </li>
+   </ul>
+  </a>
+ {% endfor %}
+{% endblock %}
+
