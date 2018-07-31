@@ -6,8 +6,10 @@ class User(models.Model):
     username = models.CharField(max_length=100)
     email  = models.CharField(max_length=100)
     password  = models.CharField(max_length=100)
+    picture= models.ImageField(upload_to='user/%Y/%m/%d/', null=True, blank=True)
     photo_url = models.TextField()
     interest = models.TextField()
+
 
     def __str__(self):
         return self.username
