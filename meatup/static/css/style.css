@@ -1,26 +1,34 @@
+
 h1{
   text-align: center;
   color: turquoise;
-}
-strong {
-  color: orange;
 }
 
 footer {
   display: flex;
   justify-content: center;
 }
-
-h2{
-  text-align: center;
-  color: black;
-}
 h4{
-  text-align: center;
-  color: turquoise;
+  color: blue;
+  border:dashed blue 2px;
+  margin: ;
+
 }
-.profile_name{
- text-align: center;
+#profile{
+  text-align: center;
+  outline: solid black 8px;
+}
+p{
+  text-align:center;
+}
+.save-btn{
+    justify-content:center;
+    margin-left: 550px;
+
+}
+#events{
+  text-align: center;
+  outline: solid black 8px;
 }
 
 

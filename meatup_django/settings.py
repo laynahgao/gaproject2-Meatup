@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'meatup',
+    'django_extensions'
 
 ]
 
@@ -125,6 +126,4 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
-MEDIA_ROOT = os.path.join(STATIC_ROOT,'media')
-MEDIA_URL= '/media/'
 

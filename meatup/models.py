@@ -23,8 +23,8 @@ class User(models.Model):
         return self.username
 
 class Event(models.Model):
-    attendees = models.ForeignKey(User, on_delete=models.CASCADE, related_name='events', null=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='my_events', null=True)
+    # attendees = models.ForeignKey(User, on_delete=models.CASCADE, related_name='events', null=True)
+    # owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='my_events', null=True)
     event_name = models.CharField(max_length=100)
     event_datetime = models.CharField(max_length=100)
     event_location = models.CharField(max_length=100)

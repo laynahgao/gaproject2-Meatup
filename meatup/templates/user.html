@@ -1,17 +1,32 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-   {% block content %}
-<div id="profile_name">
-<h2>{{username.username}}'s profile</h2><a href="{% url 'user_edit' id=user.id%}">(edit)</a></h2>
-</div>
+{% block content %}
+
+<div id="profile">
+<h2>{{username.username}}'s profile</h2><a href="{% url 'user_edit' id=user.id%}">Edit profile</a></h2>
+
 
 <h4>Name: {{username.first_name}}</h4>
 
 <h4>Email: {{username.email}}</h4>
 
-<h4>{{username.photo_url}}</h4>
+<h4 class="photo">{{username.photo_url}}</h4>
 <h4>Interests: {{username.interest}}</h4>
+
+</div>
+<div id="events">
+<h2>{{username.username}}'s Events</h2> <a href="{% url 'event_create' %}">New Event</a></h2>
+
+
+<ul>
+  <li>
+
+  </li>
+</ul>
+</div>
+
+
 
 
 
