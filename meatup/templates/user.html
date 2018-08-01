@@ -1,16 +1,15 @@
-   {% block content %}
+{% extends 'base.html' %}
+{% load staticfiles %}
 
-<h2>{{username.username}}'s profile:</h2> <a href="{% url 'user_edit' id=user.id%}">(edit)</a></h2>
+   {% block content %}
+<div id="profile_name">
+<h2>{{username.username}}'s profile</h2><a href="{% url 'user_edit' id=user.id%}">(edit)</a></h2>
+</div>
 
 <h4>Name: {{username.first_name}}</h4>
+
 <h4>Email: {{username.email}}</h4>
-<div class="profile-pic">
-  {% if user.picture %}
-  <img src="{{ user.picture.url }}" alt="{{ user.photo_url }}" />
-  {% else %}
-  <img src="{{ STATIC_URL }}img/#" alt="{{ user.first_name }} image" />
-    {% endif %}
-</div>
+
 <h4>{{username.photo_url}}</h4>
 <h4>Interests: {{username.interest}}</h4>
 

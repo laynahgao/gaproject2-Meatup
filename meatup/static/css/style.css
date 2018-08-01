@@ -10,3 +10,17 @@ footer {
   display: flex;
   justify-content: center;
 }
+
+h2{
+  text-align: center;
+  color: black;
+}
+h4{
+  text-align: center;
+  color: turquoise;
+}
+.profile_name{
+ text-align: center;
+}
+
+

@@ -4,12 +4,9 @@ from .models import Event
 from .forms import EventForm
 
 from django.contrib.auth import authenticate, login, logout
-
-# Create your views here.
 from .models import User
 from .forms import LoginForm
 from django.http import HttpResponse, HttpResponseRedirect
-
 from .forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 
