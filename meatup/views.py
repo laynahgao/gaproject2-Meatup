@@ -90,7 +90,7 @@ def signup(request):
         user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
         profile = Profile.objects.create(user=user)
         auth.login(request, user)
-        return redirect('homepage')
+        return redirect('index')
     else:
       return render(request, 'signup.html', {'error': 'Passwords do not match'})
   # GET request for empty sign up form
