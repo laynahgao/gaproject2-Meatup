@@ -6,14 +6,19 @@
 <div id="profile">
 <h2>{{profile.user.username}}'s profile</h2><a href="{% url 'user_edit' id=user.id %}">Edit profile</a></h2>
 
-
-<h4>Name: {{profile.first_name}}</h4>
 <div class="profile-pic">
   {% if profile.picture %}
-    <img src="{{ profile.picture.url }}" alt="{{ profile.user.username }}" width="300" />
+    <img src="{{ profile.picture.url }}" alt="{{ profile.user.username }}" width="350" height="200" />
   {% else %}
-    <img src="https://robohash.org/place_holder_img.png" alt="{{ profile.first_name }} image" />
+    <img src="http://via.placeholder.com/350x200" alt="{{ profile.first_name }} image" />
     {% endif %}
+<h4>Name: {{profile.first_name}}</h4>
+<!-- <div class="profile-pic">
+  {% if profile.picture %}
+    <img src="{{ profile.picture.url }}" alt="{{ profile.user.username }}" width="350" height="200" />
+  {% else %}
+    <img src="http://via.placeholder.com/350x200" alt="{{ profile.first_name }} image" />
+    {% endif %} -->
 
 
 <h4>Email: {{profile.email}}</h4>
@@ -23,7 +28,7 @@
 
 </div>
 <div id="events">
-<h2>{{profile.first_name}}'s Events</h2> <a href="{% url 'event_create' %}">New Event</a></h2>
+<h2>{{profile.user.username}}'s  Events</h2> <a href="{% url 'event_create' %}">Create New Event</a></h2>
 
 
 {% for event in events %}
