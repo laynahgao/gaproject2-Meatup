@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class='warning'>
+  To use this application you need to <a href="{% url 'login' %}">Sign-in</a> to the application.
+</div>
+{% endblock %}

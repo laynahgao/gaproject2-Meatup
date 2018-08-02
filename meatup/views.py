@@ -23,6 +23,9 @@ def event_list(request):
     events = Event.objects.all()
     return render(request, 'event_list.html', {'events': events})
 
+def index_landing(request):
+    return render(request, 'index.html')
+
 #Event Show
 def event_detail(request, id):
     event = Event.objects.get(id=id)
