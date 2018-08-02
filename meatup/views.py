@@ -56,7 +56,18 @@ def event_edit(request, id):
 def event_delete(request, id):
   Event.objects.get(id=id).delete()
   return redirect('event_list')
-
+ #Event Attendees
+def event_attendees(request, id):
+    # event_id = request.GET.get('event_id', None)
+    print('Id',id)
+    attendees = 0
+    if (id):
+        event = Event.objects.get(id=int(id))
+        if event is not None:
+            attendees = event.attendees + 1
+            event.attendees = attendees
+            event.save()
+    return redirect('event_detail', id=event.id)
 ## Homepage##
 
 def index(request):
