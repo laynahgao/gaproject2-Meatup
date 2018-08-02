@@ -8,7 +8,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-
+from django.core.mail import send_mail
 # Create your views here.
 
 from .forms import EventForm
@@ -65,6 +65,7 @@ def index(request):
 
 
 def signup(request):
+  # email = Profile.objects.get()
   # POST Request for a new user
   if request.method == 'POST':
     # Verify passwords
@@ -79,6 +80,13 @@ def signup(request):
         profile = Profile.objects.create(user=user)
         auth.login(request, user)
         return redirect('index')
+        send_mail(
+                    'Succesfull Signup',
+                    'Hey Welcome to Meatup! Happy Networking!!.',
+                    'gupta.sweet.niti@gmail.com',
+                    ['gupta.sweet.niti@gmail.com'],
+                    fail_silently=False,
+                )
     else:
       return render(request, 'signup.html', {'error': 'Passwords do not match'})
   # GET request for empty sign up form
