@@ -11,12 +11,15 @@ footer {
 h4{
   color: blue;
   border:dashed blue 2px;
-  margin: ;
+  padding-left: 100px;
 
 }
 #profile{
   text-align: center;
   outline: solid black 8px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-left: -20px;
 }
 p{
   text-align:center;
@@ -30,5 +33,6 @@ p{
   text-align: center;
   outline: solid black 8px;
 }
+
 
 

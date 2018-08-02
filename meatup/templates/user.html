@@ -9,6 +9,7 @@
 
 <h4>Name: {{username.first_name}}</h4>
 
+
 <h4>Email: {{username.email}}</h4>
 
 <h4 class="photo">{{username.photo_url}}</h4>
@@ -19,15 +20,17 @@
 <h2>{{username.username}}'s Events</h2> <a href="{% url 'event_create' %}">New Event</a></h2>
 
 
-<ul>
-  <li>
-
-  </li>
-</ul>
+{% for event in events %}
+       <li>
+           Name:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
+           Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
+           DateTime:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_datetime }}</a>
+          <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
+      </li>
 </div>
 
 
-
+{% endfor %}
 
 
 {% endblock %}
