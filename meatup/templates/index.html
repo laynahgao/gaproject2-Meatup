@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class='warning'>
+  To use this application you need to <a href="{% url 'login' %}">Sign-in</a> to the application.
+  <br>
+  To create a new account, use the <a href="{% url 'signup' %}">Sign-up</a> form.
+</div>
+{% endblock %}
