@@ -35,20 +35,6 @@
 <!--             <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
  -->        </li>
     {% endfor %}
-</ul>
 
-{% for event in events %}
-  <a href="/{{ event.id }}">
-   <ul>
-    <li>
-      <p><strong>Event Name: </strong>{{ event.event_name }} &nbsp;
-         <strong>Event Owner: </strong>{{ event.owner }} &nbsp;
-         <strong>Event location: </strong>{{ event.event_location }}
-       </p>
-    </li>
-   </ul>
-  </a>
-  <a href="">Load More</a>
- {% endfor %}
 {% endblock %}
 
