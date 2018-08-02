@@ -17,12 +17,12 @@ class Profile(models.Model):
     return self.user.username
 
 class Event(models.Model):
-    attendees = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='events')
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='my_events')
     event_name = models.CharField(max_length=100)
-    event_datetime = models.CharField(max_length=100)
     event_location = models.CharField(max_length=100)
     event_description = models.TextField()
+    attendees = models.IntegerField(default=0)
+    date = models.DateField(("Date"), default=datetime.date.today)
+    time = models.TimeField(("Time"), default='00:00')
 
     def __str__(self):
         return self.event_name
