@@ -9,7 +9,7 @@ class Profile(models.Model):
   first_name = models.CharField(max_length=100, blank=True)
   email = models.EmailField(max_length=50, null=True, blank=True)
   interest = models.TextField(null=True, blank=True)
-  picture= models.TextField( null=True, blank=True)
+  picture= models.ImageField(upload_to='user/%Y/%m/%d/', null=True, blank=True)
   photo_url = models.TextField(null=True, blank=True)
   updated = models.BooleanField(default=False)
 

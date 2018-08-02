@@ -13,8 +13,8 @@
       {% endif %}
     </div>
 </nav>
+<a href="{% url 'user_info' id=user.id%}">Profile</a>
 
-<a href="{% url 'user_create' %}">Edit User Profile</a>
 <hr />
 <a href="{% url 'event_create' %}">Create New Event</a>
 
@@ -34,6 +34,7 @@
     </li>
    </ul>
   </a>
+  <a href="">Load More</a>
  {% endfor %}
 {% endblock %}
 
