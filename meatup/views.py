@@ -16,7 +16,6 @@ from django.shortcuts import render, redirect
 
 from .forms import ProfileForm
 from pprint import pprint
-from .forms import UserForm
 
 ############################  EVENTS ###########################
 #Event Index
