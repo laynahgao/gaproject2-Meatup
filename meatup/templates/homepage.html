@@ -18,22 +18,24 @@
 <hr />
 <a href="{% url 'event_create' %}">Create New Event</a>
 
-<h3>Event List</h3>
+<h2>Events <a href="{% url 'event_create' %}">(+)</a></h2>
+
 <hr />
 
 
 
-{% for event in events %}
-  <a href="/{{ event.id }}">
-   <ul>
-    <li>
-      <p><strong>Event Name: </strong>{{ event.event_name }} &nbsp;
-         <strong>Event Owner: </strong>{{ event.owner }} &nbsp;
-         <strong>Event location: </strong>{{ event.event_location }}
-       </p>
-    </li>
-   </ul>
-  </a>
- {% endfor %}
+<ul>
+    {% for event in events %}
+        <li>
+            Name:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
+            Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
+            Date:<a href="{% url 'event_detail' id=event.id %}">{{ event.date }}</a>
+            Time:<a href="{% url 'event_detail' id=event.id %}">{{ event.time }}</a>
+            Attendees:<a href="{% url 'event_detail' id=event.id %}">{{ event.attendees }}</a>
+
+<!--             <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
+ -->        </li>
+    {% endfor %}
+</ul>
 {% endblock %}
 
