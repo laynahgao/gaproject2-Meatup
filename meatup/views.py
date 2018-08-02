@@ -113,7 +113,7 @@ def login_view(request):
             foundUser = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
             if foundUser:
                 auth.login(request, foundUser)
-                return redirect('homepage')
+                return redirect('index')
             else:
                 return render(request, 'login.html', {error: 'Username/password not found'})
 
@@ -123,7 +123,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return redirect('landing')
 
 
 #### User ####
