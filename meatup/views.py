@@ -149,33 +149,23 @@ def logout_view(request):
 ## user profile page ##
 # @login_required
 def user_info(request,id):
-    username = User.objects.get(id=id)
-    print(username)
+    user = User.objects.get(id=id)
+    profile = Profile.objects.get(user=user)
     #events = Event.objects.filter
-    return render(request, 'user.html', {'username': username})
+    return render(request, 'user.html', {'profile': profile})
 
-# @login_required
-## create ##
-def  user_create(request):
-  if request.method == 'POST':
-    form = ProfileForm(request.POST)
-    if form.is_valid():
-        user= form.save()
-        return redirect('user_info', id=user.id)
-  else:
-    form = ProfileForm()
-  return render(request, 'user_form.html', {'form': form})
 
 ## edit ##
 
 def  user_edit(request,id):
-  user= User.objects.get(id=id)
+  user = User.objects.get(id=id)
+  profile = Profile.objects.get(user=user)
   if request.method == 'POST':
-    form = ProfileForm(request.POST, instance=user)
+    form = ProfileForm(request.POST, request.FILES, instance=profile)
     if form.is_valid():
-        user = form.save()
-        return redirect('user_info', id=user.id)
+        profile = form.save()
+        return redirect('user_info', id=id)
   else:
-    form = ProfileForm(instance=user)
+    form = ProfileForm(instance=profile)
   return render(request, 'user_form.html', {'form': form})
 
