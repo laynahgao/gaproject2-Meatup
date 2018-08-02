@@ -1,21 +1,18 @@
 from django.shortcuts import render, redirect
-from .models import Event
-from .forms import EventForm
 
-from django.contrib.auth import authenticate, login, logout
-# Create your views here.
-from .models import Profile
 from .models import Event
+from .models import Profile
 from .models import User
 
-from .forms import LoginForm
-from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import auth
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.http import HttpResponse, HttpResponseRedirect
 
-from django.shortcuts import render, redirect
+# Create your views here.
 
-from .forms import ProfileForm
-from pprint import pprint
+from .forms import EventForm
+from .forms import LoginForm
 
 ############################  EVENTS ###########################
 #Event Index
@@ -80,12 +77,25 @@ def index(request):
 
 
 def signup(request):
-    return HttpResponseRedirect('')
-        # user = User.objects.get(id:username)
-
-    # if user:
-    #     return render(request, 'signup.html')
-
+  # POST Request for a new user
+  if request.method == 'POST':
+    # Verify passwords
+    if request.POST['password1'] == request.POST['password2'] and request.POST['password1'] != '':
+      try:
+        # If Username already exists, render form with error
+        user = User.objects.get(username=request.POST['username'])
+        return render(request, 'signup.html', {'error': 'Username already in use'})
+      # If user does not exist, create and login new user then redirect to home
+      except User.DoesNotExist:
+        user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+        profile = Profile.objects.create(user=user)
+        auth.login(request, user)
+        return redirect('homepage')
+    else:
+      return render(request, 'signup.html', {'error': 'Passwords do not match'})
+  # GET request for empty sign up form
+  else:
+    return render(request, 'signup.html')
 
 def login_view(request):
     if request.method == 'POST':
