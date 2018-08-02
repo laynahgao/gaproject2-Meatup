@@ -1,12 +1,38 @@
+
 h1{
   text-align: center;
   color: turquoise;
-}
-strong {
-  color: orange;
 }
 
 footer {
   display: flex;
   justify-content: center;
 }
+h4{
+  color: blue;
+  border:dashed blue 2px;
+
+
+}
+#profile{
+  text-align: center;
+  outline: solid black 8px;
+  padding-left: 200px;
+  padding-right: 200px;
+
+}
+p{
+  text-align:center;
+}
+.save-btn{
+    justify-content:center;
+    margin-left: 550px;
+
+}
+#events{
+  text-align: center;
+  outline: solid black 8px;
+}
+
+
+

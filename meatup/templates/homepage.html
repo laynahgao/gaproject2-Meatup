@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
-
 {% block content %}
 <nav>
     <div class="user-info">
@@ -13,14 +11,15 @@
       {% endif %}
     </div>
 </nav>
+<a href="{% url 'user_info' id=user.id%}">Profile</a>
 
-<a href="{% url 'user_create' %}">Edit User Profile</a>
 <hr />
 <a href="{% url 'event_create' %}">Create New Event</a>
 
 <h2>Events <a href="{% url 'event_create' %}">(+)</a></h2>
 
 <hr />
+
 
 
 
@@ -37,5 +36,19 @@
  -->        </li>
     {% endfor %}
 </ul>
+
+{% for event in events %}
+  <a href="/{{ event.id }}">
+   <ul>
+    <li>
+      <p><strong>Event Name: </strong>{{ event.event_name }} &nbsp;
+         <strong>Event Owner: </strong>{{ event.owner }} &nbsp;
+         <strong>Event location: </strong>{{ event.event_location }}
+       </p>
+    </li>
+   </ul>
+  </a>
+  <a href="">Load More</a>
+ {% endfor %}
 {% endblock %}
 
