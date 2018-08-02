@@ -2,16 +2,17 @@
 
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
-from .models import User
+from .models import Profile
 from .models import Event
+
 from .forms import LoginForm
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
 
 from django.shortcuts import render, redirect
 
-from .forms import UserForm
-
-
+from .forms import ProfileForm
+from pprint import pprint
 
 ## Homepage##
 
@@ -20,22 +21,34 @@ def index(request):
     return render(request, 'homepage.html', { 'events': events })
 
 
+def signup(request):
+    return HttpResponseRedirect('')
+        # user = User.objects.get(id:username)
+
+    # if user:
+    #     return render(request, 'signup.html')
+
+
 def login_view(request):
     if request.method == 'POST':
         # if post, then authenticate (user submitted username and password)
         form = LoginForm(request.POST)
+
+        print("login POST request")
+
         if form.is_valid():
-            u = form.cleaned_data['username']
+            e = form.cleaned_data['username']
             p = form.cleaned_data['password']
-            user = authenticate(username = u, password = p)
-            if user is not None:
-                if user. is_active:
-                    login(request, user)
-                    return HttpResponseRedirect('/')
-                else:
-                    print("The account has been disabled.")
+
+            print("form is valid: " + e)
+
+            foundUser = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
+            if foundUser:
+                auth.login(request, foundUser)
+                return redirect('homepage')
             else:
-                print("The username and/or password is incorrect.")
+                return render(request, 'login.html', {error: 'Username/password not found'})
+
     else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
@@ -59,12 +72,12 @@ def user_info(request,id):
 ## create ##
 def  user_create(request):
   if request.method == 'POST':
-    form = UserForm(request.POST)
+    form = ProfileForm(request.POST)
     if form.is_valid():
         user= form.save()
         return redirect('user_info', id=user.id)
   else:
-    form = UserForm()
+    form = ProfileForm()
   return render(request, 'user_form.html', {'form': form})
 
 ## edit ##
@@ -72,11 +85,11 @@ def  user_create(request):
 def  user_edit(request,id):
   user= User.objects.get(id=id)
   if request.method == 'POST':
-    form = UserForm(request.POST, instance=user)
+    form = ProfileForm(request.POST, instance=user)
     if form.is_valid():
         user = form.save()
         return redirect('user_info', id=user.id)
   else:
-    form = UserForm(instance=user)
+    form = ProfileForm(instance=user)
   return render(request, 'user_form.html', {'form': form})
 
