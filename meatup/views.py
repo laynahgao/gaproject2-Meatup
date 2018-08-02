@@ -3,17 +3,17 @@ from django.shortcuts import render, redirect
 
 from .models import Event
 from .models import Profile
-from .models import User
+
 
 from django.contrib import auth
 from django.contrib.auth import authenticate, login, logout
-<<<<<<< HEAD
+
 from .models import User
 from .forms import LoginForm
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import UserForm
+
 from django.contrib.auth import authenticate, login, logout
-=======
+
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -22,7 +22,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .forms import EventForm
 from .forms import LoginForm
 from .forms import ProfileForm
->>>>>>> 1ed9f0186a8817fdee0ff8e757a66baf57b39d67
+
 
 ############################  EVENTS ###########################
 #Event Index
@@ -95,7 +95,7 @@ def signup(request):
     return render(request, 'signup.html')
 
 def login_view(request):
-<<<<<<< HEAD
+
   if request.method == 'POST':
     # if post, then authenticate (user submitted username and password)
     form = LoginForm(request.POST)
@@ -114,8 +114,8 @@ def login_view(request):
   else:
       form = LoginForm()
       return render(request, 'login.html', {'form': form})
-=======
-    if request.method == 'POST':
+
+  if request.method == 'POST':
         # if post, then authenticate (user submitted username and password)
         form = LoginForm(request.POST)
 
@@ -134,10 +134,10 @@ def login_view(request):
             else:
                 return render(request, 'login.html', {error: 'Username/password not found'})
 
-    else:
+  else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
->>>>>>> 1ed9f0186a8817fdee0ff8e757a66baf57b39d67
+
 
 def logout_view(request):
     logout(request)
