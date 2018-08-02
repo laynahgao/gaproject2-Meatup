@@ -13,6 +13,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from .forms import EventForm
 from .forms import LoginForm
+from .forms import ProfileForm
 
 ############################  EVENTS ###########################
 #Event Index
