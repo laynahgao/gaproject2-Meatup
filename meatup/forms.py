@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import User
 from .models import Event
 from .models import Profile
 
@@ -9,7 +8,7 @@ from .models import Profile
 class EventForm(forms.ModelForm):
   class Meta:
     model = Event
-    fields = ('event_name', 'event_datetime', 'event_location', 'event_description')
+    fields = ('event_name', 'date', 'time', 'event_location', 'event_description')
 
 class LoginForm(forms.Form):
   # class Meta:
@@ -22,4 +21,4 @@ class ProfileForm(forms.ModelForm):
 
   class Meta:
     model = Profile
-    fields = ('first_name', 'email', 'interest', 'picture', 'photo_url')
+    fields = ('first_name','picture', 'email', 'interest', 'photo_url')
