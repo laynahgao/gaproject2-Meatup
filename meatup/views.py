@@ -28,7 +28,7 @@ def event_detail(request, id):
     event = Event.objects.get(id=id)
     return render(request, 'event_detail.html', {'event': event})
 
-#Event Creat
+#Event Create
 def event_create(request):
   if request.method == 'POST':
     form = EventForm(request.POST)
@@ -55,19 +55,6 @@ def event_edit(request, id):
 def event_delete(request, id):
   Event.objects.get(id=id).delete()
   return redirect('event_list')
-
-#Event attendees
-# def event_attendees(request):
-#     event_id = request.GET.get('event_id', None)
-#     attendees = 0
-#     if (event_id):
-#         event = Event.objects.get(id=int(event_id))
-#         if event is not None:
-#             attendees = event.attendees + 1
-#             event.attendees = attendees
-#             event.save()
-#     return HttpResponse(attendees)
-
 
 ## Homepage##
 

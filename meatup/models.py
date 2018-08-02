@@ -16,6 +16,8 @@ class Profile(models.Model):
   dob = models.CharField(max_length=100, blank=True)
   hometown = models.CharField(max_length=100, blank=True)
   bio = models.TextField(null=True, blank=True)
+  interest = models.TextField(null=True, blank=True)
+  picture= models.ImageField(upload_to='user/%Y/%m/%d/', null=True, blank=True)
   signup_date = models.DateTimeField(default=timezone.now)
   updated = models.BooleanField(default=False)
 
