@@ -32,7 +32,8 @@ def event_list(request):
 
 def user_events(request):
     events = Event.objects.filter(user=request.user)
-    return render(request, 'user.html', {'events': events})
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'user.html', {'events': events, 'profile': profile})
 
 
 def aboutus(request):
