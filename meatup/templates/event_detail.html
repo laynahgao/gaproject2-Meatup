@@ -3,6 +3,7 @@
 {% block content %}
 
 <h2>{{ event.event_name  }} <!-- <a href ="{% url 'event_edit' id=event.id %}">(edit)</a> --> </h2>
+<a href="{% url 'user_info' id=user.id%}">My Profile</a>
 <p>
 <strong>Name:</strong>{{ event.event_name }}<br/>
 <strong>Date:</strong>{{ event.date }}<br/>
