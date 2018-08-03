@@ -15,6 +15,17 @@
 
 <h1><a href="/">Let's Meat Up!</a></h1>
 
+<nav>
+    <div class="user-info">
+      {% if user.is_authenticated %}
+          Welcome, {{ user.username }}
+          <a href="{% url 'logout' %}">Signout</a>
+      {% else %}
+          <a href="{% url 'login' %}">Signin</a>
+      {% endif %}
+    </div>
+</nav>
+
     {% block content %}
     {% endblock %}
 </body>
