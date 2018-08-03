@@ -111,8 +111,8 @@ def signup(request):
         return render(request, 'signup.html', {'error': 'Username already in use'})
       # If user does not exist, create and login new user then redirect to home
       except User.DoesNotExist:
-        user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-        profile = Profile.objects.create(user=user)
+        user = User.objects.create_user(request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
+        profile = Profile.objects.create(user=user, email=request.POST['email'])
         auth.login(request, user)
         return redirect('index')
         send_mail(
