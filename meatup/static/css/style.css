@@ -13,10 +13,8 @@ footer {
 }
 h4{
   color: black;
-/*  border:dashed blue 2px;*/
-
-
 }
+
 #profile{
   text-align: center;
 
@@ -49,6 +47,7 @@ p{
   background-size: contain;
   background-repeat: no-repeat;
   margin: 0 auto;
+
 }
 
  .imgtext{
@@ -59,6 +58,7 @@ p{
   bottom:50%;
   left:40%;
   right:50%;
+
  }
 
 

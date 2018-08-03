@@ -12,8 +12,8 @@ Meat up is an application to host events.
 
 ## Features in the application
 
-* Has authentication based on email address
-* Email address client side validation using HTML5
+* Has authentication based on username address
+* Username address client side validation using HTML5
 * Authentication validation on server side with graceful error on client
 * We use Django template to create the base layout of the app
 * About page with team member details
