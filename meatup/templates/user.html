@@ -17,8 +17,6 @@
 <h4 class="profile-email">Email: {{profile.email}}</h4>
 <h2 class="interests">Interests</h2>
 <h4 class="profile-interests">{{profile.interest}}</h4>
-</div>
-
 <div id="events">
   <h2> <a href="{% url 'user_events' %}">Show Events</a></h2>
 <a href="{% url 'event_create' %}">New Event</a></h2>
@@ -34,10 +32,10 @@
           <a href="{% url 'event_edit' id=event.id %}" class="edit">edit</a>
 
       </li>
+      {% endfor %}
 </div>
 
 
-{% endfor %}
 
 
 
