@@ -7,9 +7,9 @@
 <hr />
 <div class='row'>
   <div class='col-md-9'>
-    <a class='btn btn-primary' href="{% url 'event_create' %}">Create New Event</a>
-
     <h2>Events <a href="{% url 'event_create' %}">(+)</a></h2>
+    <a class='btn btn-primary' href="{% url 'event_create' %}">Create New Event</a>
+    <br><br>
 
     {% if events and events.length > 0 %}
     <ul>
