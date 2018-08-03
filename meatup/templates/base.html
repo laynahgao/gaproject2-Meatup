@@ -28,21 +28,6 @@
   </nav>
 
   <main class='main-container'>
-
-    <h1><a href="/">Let's Meat Up!</a></h1>
-
-    <nav>
-        <div class="user-info">
-          {% if user and user.is_authenticated %}
-              Welcome, {{ user.username }}
-              <a href="{% url 'logout' %}">Sign Out</a>
-          {% else %}
-              <a href="{% url 'login' %}">Sign In</a>
-              <a href="{% url 'signup' %}">Sign Up</a>
-          {% endif %}
-        </div>
-    </nav>
-
     {% block content %}
     {% endblock %}
   </main>
