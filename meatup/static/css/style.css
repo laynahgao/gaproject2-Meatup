@@ -1,3 +1,6 @@
+html, body {
+  height: 100%;
+}
 
 h1{
   text-align: center;
@@ -45,3 +48,47 @@ p{
  }
 
 
+/**
+styles for top navigation bar
+*/
+
+.site-header {
+  background-color: black;
+}
+
+.site-header a, .site-header .aslink {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+
+footer {
+  background-color: #f8f9fa !important;
+  color: #212529;
+}
+
+
+.main-container {
+  padding: 2rem;
+  min-height: 80%;
+}
+.error-message {
+  display: none;
+}
+.well h2 {
+  text-align: center;
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+}
+.well {
+  padding: 2rem;
+  border: 1px solid;
+  background-color: lightgray;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+}
+.center-text {
+  text-align: center;
+}
