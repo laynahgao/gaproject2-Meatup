@@ -6,42 +6,32 @@
 <div id="profile">
 <h2>{{profile.user.username}}'s profile</h2><a href="{% url 'user_edit' id=user.id %}">Edit profile</a></h2>
 
-<div class="profile-pic">
+<div class="card">
   {% if profile.picture %}
     <img src="{{ profile.picture.url }}" alt="{{ profile.user.username }}" width="350" height="200" />
   {% else %}
-    <img src="http://via.placeholder.com/350x200" alt="{{ profile.first_name }} image" />
+    <img src="/static/img/placeholder.gif" alt="{{ profile.first_name }} image" />
     {% endif %}
-<h4>Name: {{profile.first_name}}</h4>
-<!-- <div class="profile-pic">
-  {% if profile.picture %}
-    <img src="{{ profile.picture.url }}" alt="{{ profile.user.username }}" width="350" height="200" />
-  {% else %}
-    <img src="http://via.placeholder.com/350x200" alt="{{ profile.first_name }} image" />
-    {% endif %} -->
-
-
-<h4>Email: {{profile.email}}</h4>
-
-<h4 class="photo">{{profile.photo_url}}</h4>
-<h4>Interests: {{profile.interest}}</h4>
-
+<h2 class="profile-name">{{profile.first_name}}</h2>
+<h4 class="profile-email">{{profile.email}}</h4>
+<h4 class="profile-interests">{{profile.interest}}</h4>
 </div>
 <div id="events">
 <h2>{{profile.user.username}}'s  Events</h2> <a href="{% url 'event_create' %}">Create New Event</a></h2>
-
-
-{% for event in events %}
-       <li>
-           Name:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
-           Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
-           DateTime:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_datetime }}</a>
-          <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
-      </li>
 </div>
+</div>
+<ul>
+    {% for event in events %}
+        <li>
+            Name:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
+            Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
+            Date:<a href="{% url 'event_detail' id=event.id %}">{{ event.date }}</a>
+            Time:<a href="{% url 'event_detail' id=event.id %}">{{ event.time }}</a>
+            Attendees:<a href="{% url 'event_detail' id=event.id %}">{{ event.attendees }}</a>
 
-
-{% endfor %}
+<!--             <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
+ -->        </li>
+    {% endfor %}
 
 
 {% endblock %}

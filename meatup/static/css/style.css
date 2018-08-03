@@ -10,15 +10,21 @@ footer {
 }
 h4{
   color: blue;
-  border:dashed blue 2px;
+/*  border:dashed blue 2px;*/
 
 
 }
 #profile{
   text-align: center;
-  outline: solid black 8px;
+  outline: solid black 2px;
   padding-left: 200px;
   padding-right: 200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  margin-top: 100px;
 
 }
 p{
@@ -31,8 +37,11 @@ p{
 }
 #events{
   text-align: center;
-  outline: solid black 8px;
+  outline: solid black 2px;
 }
-
+ a {
+  text-decoration: none;
+  color: rgb(57,220,198);
+ }
 
 
