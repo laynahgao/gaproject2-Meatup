@@ -36,7 +36,7 @@ def index_landing(request):
       return render(request, 'index.html')
 
     if user.is_authenticated:
-      redirect('homepage')
+      redirect('index')
 
     # user is available but either is not valid
     # or has not yet authenticated
