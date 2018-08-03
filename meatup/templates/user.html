@@ -5,15 +5,17 @@
 
 <div id="profile">
 <h2>{{profile.user.username}}'s profile</h2><a href="{% url 'user_edit' id=user.id %}">Edit profile</a></h2>
-
+</div>
 <div class="card">
   {% if profile.picture %}
     <img class="profile-image" src="{{ profile.picture.url }}" alt="{{ profile.user.username }}" width="350" height="200" />
   {% else %}
     <img class="profile-image" src="/static/img/placeholder.gif" alt="{{ profile.first_name }} image" width="350" height="200"  />
     {% endif %}
+
 <h2 class="profile-name">{{profile.first_name}}</h2>
 <h4 class="profile-email">{{profile.email}}</h4>
+
 <h4 class="profile-interests">{{profile.interest}}</h4>
 </div>
 

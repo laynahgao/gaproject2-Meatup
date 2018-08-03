@@ -86,7 +86,15 @@ footer {
 .profile-image {
   width: 200px;
   height: 200px;
-  margin: 0 auto;
+
+}
+.profile-name{
+padding-top: 50px;
+}
+.profile-interests{
+  text-align: center;
+  margin-top: -50px;
+  padding-bottom: 50px;
 }
 .center-text {
   text-align: center;
