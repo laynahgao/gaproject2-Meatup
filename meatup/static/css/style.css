@@ -13,10 +13,8 @@ footer {
 }
 h4{
   color: black;
-/*  border:dashed blue 2px;*/
-
-
 }
+
 #profile{
   text-align: center;
 
@@ -41,6 +39,26 @@ p{
   color: rgb(12,95,249);
  }
 
+ .coverpic {
+  height:100%;
+  width:100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+
+}
+
+ .imgtext{
+  color:floralwhite;
+  font-size: 70px;
+  position: absolute;
+  top: 50%;
+  bottom:50%;
+  left:40%;
+  right:50%;
+
+ }
 
 /**
 styles for top navigation bar
