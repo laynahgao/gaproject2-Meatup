@@ -36,3 +36,15 @@ p{
 
 
 
+/**
+styles for top navigation bar
+*/
+
+.site-header {
+  background-color: black;
+}
+
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
