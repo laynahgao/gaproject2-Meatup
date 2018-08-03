@@ -48,3 +48,8 @@ styles for top navigation bar
   color: #999;
   transition: ease-in-out color .15s;
 }
+
+footer {
+  background-color: #f8f9fa !important;
+  color: #212529;
+}
