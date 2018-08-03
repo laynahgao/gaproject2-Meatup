@@ -88,7 +88,11 @@ def event_edit(request, id):
 #Event Delete
 def event_delete(request, id):
   Event.objects.get(id=id).delete()
-  return render(request, 'user.html')
+  profile = Profile.objects.get(user=request.user)
+  return render(request, 'user.html', {'profile': profile})
+
+
+
  #Event Attendees
 def event_attendees(request, id):
     # event_id = request.GET.get('event_id', None)

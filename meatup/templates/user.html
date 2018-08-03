@@ -13,9 +13,9 @@
     <img class="profile-image" src="/static/img/placeholder.gif" alt="{{ profile.first_name }} image" width="350" height="200"  />
     {% endif %}
 
-<h2 class="profile-name">{{profile.first_name}}</h2>
-<h4 class="profile-email">{{profile.email}}</h4>
-
+<h2 class="profile-name">Name: {{profile.first_name}}</h2>
+<h4 class="profile-email">Email: {{profile.email}}</h4>
+<h2 class="interests">Interests</h2>
 <h4 class="profile-interests">{{profile.interest}}</h4>
 </div>
 
@@ -26,7 +26,7 @@
 
 
 {% for event in events %}
-       <li>
+       <li class="user-events">
            Name:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
            Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
            DateTime:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_datetime }}</a>
