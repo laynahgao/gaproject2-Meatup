@@ -35,7 +35,6 @@ p{
 }
 #events{
   text-align: center;
-
 }
  a {
   text-decoration: none;
@@ -119,20 +118,22 @@ padding-top: 50px;
 .user-events{
 text-align: center;
 list-style-type: none;
-=======
-#event_detail{
+}
+
+.event_detail {
+  text-align: center;
   padding: 0 20em;
 }
-
-#event_detail a{
-  background: black;
+.event_detail h3{
+  color: Black;
 }
-#event_detail h1{
-  text-align: left;
+.event-form{
+text-align: center;
+list-style-type: none;
 }
-#event_detail h5{
-  text-align: left;
-
+.event-form button{
+  color: grey;
+background: black;
 }
 
 /*.warning {
