@@ -16,7 +16,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-
+from django.core.mail import send_mail
 # Create your views here.
 
 from .forms import EventForm
@@ -30,7 +30,22 @@ def event_list(request):
     events = Event.objects.all()
     return render(request, 'event_list.html', {'events': events})
 
+def aboutus(request):
+    return render(request, 'about.html')
+
 def index_landing(request):
+    user = request.user
+    if user is None:
+      print('user is none')
+      return render(request, 'index.html')
+
+    if user.is_authenticated:
+      print('user is authenticated')
+      return redirect('index')
+
+    # user is available but either is not valid
+    # or has not yet authenticated
+    print('user is not authenticated')
     return render(request, 'index.html')
 
 #Event Show
@@ -85,6 +100,7 @@ def index(request):
 
 
 def signup(request):
+  # email = Profile.objects.get()
   # POST Request for a new user
   if request.method == 'POST':
     # Verify passwords
@@ -99,6 +115,13 @@ def signup(request):
         profile = Profile.objects.create(user=user)
         auth.login(request, user)
         return redirect('index')
+        send_mail(
+                    'Succesfull Signup',
+                    'Hey Welcome to Meatup! Happy Networking!!.',
+                    'gupta.sweet.niti@gmail.com',
+                    ['gupta.sweet.niti@gmail.com'],
+                    fail_silently=False,
+                )
     else:
       return render(request, 'signup.html', {'error': 'Passwords do not match'})
   # GET request for empty sign up form
@@ -106,27 +129,7 @@ def signup(request):
     return render(request, 'signup.html')
 
 def login_view(request):
-
-  if request.method == 'POST':
-    # if post, then authenticate (user submitted username and password)
-    form = LoginForm(request.POST)
-    if form.is_valid():
-        u = form.cleaned_data['username']
-        p = form.cleaned_data['password']
-        user = authenticate(username = u, password = p)
-        if user is not None:
-            if user. is_active:
-                login(request, user)
-                return redirect('user_info', id=user.id)
-            else:
-                print("The account has been disabled.")
-        else:
-            print("The username and/or password is incorrect.")
-  else:
-      form = LoginForm()
-      return render(request, 'login.html', {'form': form})
-
-  if request.method == 'POST':
+    if request.method == 'POST':
         # if post, then authenticate (user submitted username and password)
         form = LoginForm(request.POST)
 
@@ -143,17 +146,15 @@ def login_view(request):
                 auth.login(request, foundUser)
                 return redirect('index')
             else:
-                return render(request, 'login.html', {error: 'Username/password not found'})
+                return render(request, 'login.html', { 'error' : 'invalid', 'username' : e })
 
-  else:
+    else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
-
 
 def logout_view(request):
     logout(request)
     return redirect('landing')
-
 
 #### User ####
 
