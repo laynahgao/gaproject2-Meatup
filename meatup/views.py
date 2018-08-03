@@ -30,6 +30,9 @@ def event_list(request):
     events = Event.objects.all()
     return render(request, 'event_list.html', {'events': events})
 
+def aboutus(request):
+    return render(request, 'about.html')
+
 def index_landing(request):
     user = request.user
     if user is None:
