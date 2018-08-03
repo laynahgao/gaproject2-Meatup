@@ -3,7 +3,7 @@
 {% block content %}
 
 
- <a class="btn" data-id="{{event.id}}" href="{% url 'event_attendees' id=event.id %}">
+ <a class="btn" data-id="{{event.id}}" href="{% url 'event_attendees' id=event.id %}"></a>
 <div class = "event_detail" >
 <h1>{{ event.event_name  }} <!-- <a href ="{% url 'event_edit' id=event.id %}">(edit)</a> --> </h2>
 <br/>
