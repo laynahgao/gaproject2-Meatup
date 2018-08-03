@@ -62,3 +62,16 @@ footer {
   padding: 2rem;
   min-height: 80%;
 }
+.error-message {
+  display: none;
+}
+.well h2 {
+  text-align: center;
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+}
+.well {
+  padding: 2rem;
+  border: 1px solid;
+  background-color: lightgray;
+}
