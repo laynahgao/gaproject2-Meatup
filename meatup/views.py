@@ -140,7 +140,7 @@ def login_view(request):
                 auth.login(request, foundUser)
                 return redirect('index')
             else:
-                return render(request, 'login.html', {error: 'Username/password not found'})
+                return render(request, 'login.html', { 'error' : 'invalid', 'username' : e })
 
     else:
         form = LoginForm()

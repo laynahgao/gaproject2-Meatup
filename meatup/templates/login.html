@@ -11,8 +11,14 @@
 
       {% csrf_token %}
 
+      {% if error %}
+        <div class='alert alert-danger'>
+          The username/password combination is invalid
+        </div>
+      {% endif %}
+
       <div class="form-group mx-sm-3 mb-2">
-          <input class='form-control' type="text" name="username" id='signin-username' placeholder="Email">
+          <input class='form-control' type="text" name="username" id='signin-username' placeholder="Email" value='{{ username }}'>
           <p class="form-text text-muted error-message">Please enter your email-id.</p>
       </div>
 
