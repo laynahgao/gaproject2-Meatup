@@ -31,6 +31,15 @@ def event_list(request):
     return render(request, 'event_list.html', {'events': events})
 
 def index_landing(request):
+    user = request.user
+    if user is None:
+      return render(request, 'index.html')
+
+    if user.is_authenticated:
+      redirect('homepage')
+
+    # user is available but either is not valid
+    # or has not yet authenticated
     return render(request, 'index.html')
 
 #Event Show
