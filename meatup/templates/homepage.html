@@ -12,19 +12,24 @@
     <br><br>
 
     {% if events.count > 0 %}
-    <ul>
+    <table class='table'>
         {% for event in events %}
-            <li>
-                Name:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
-                Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
-                Date:<a href="{% url 'event_detail' id=event.id %}">{{ event.date }}</a>
-                Time:<a href="{% url 'event_detail' id=event.id %}">{{ event.time }}</a>
-                Attendees:<a href="{% url 'event_detail' id=event.id %}">{{ event.attendees }}</a>
-
-    <!--             <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
-     -->        </li>
+          <tr class='event-row'>
+            <td>
+                <a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
+            </td>
+            <td>
+                At, {{ event.event_location }}
+            </td>
+            <td>
+                On {{ event.date }}, {{ event.time }}
+            </td>
+            <td>
+                Attendees:&nbsp;{{ event.attendees }}
+            </td>
+          </tr>
         {% endfor %}
-    </ul>
+    </table>
     {% else %}
       <div class='alert alert-primary'>
         You currently have no events created.
