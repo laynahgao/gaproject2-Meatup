@@ -19,9 +19,10 @@
     <div class="user-info">
       {% if user and user.is_authenticated %}
           Welcome, {{ user.username }}
-          <a href="{% url 'logout' %}">Signout</a>
+          <a href="{% url 'logout' %}">Sign Out</a>
       {% else %}
-          <a href="{% url 'login' %}">Signin</a>
+          <a href="{% url 'login' %}">Sign In</a>
+          <a href="{% url 'signup' %}">Sign Up</a>
       {% endif %}
     </div>
 </nav>
@@ -32,7 +33,7 @@
 
   <footer>
     <div>
-      <p>All Rights Reserved, MeatUp 2018</p>
+      <p>Copyright (C) 2018, MeatUp. All rights reserved.</p>
     </div>
   </footer>
 
