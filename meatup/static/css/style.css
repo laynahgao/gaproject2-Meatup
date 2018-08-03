@@ -19,11 +19,6 @@ h4{
 }
 #profile{
   text-align: center;
-  outline: solid black 2px;
-  padding-left: 200px;
-  padding-right: 200px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 500px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -40,7 +35,7 @@ p{
 }
 #events{
   text-align: center;
-  outline: solid black 2px;
+
 }
  a {
   text-decoration: none;
@@ -65,6 +60,9 @@ footer {
   background-color: #f8f9fa !important;
   color: #212529;
 }
+.card{
+
+}
 
 
 .main-container {
@@ -88,6 +86,7 @@ footer {
 .profile-image {
   width: 200px;
   height: 200px;
+  margin: 0 auto;
 }
 .center-text {
   text-align: center;
