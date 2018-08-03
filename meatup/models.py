@@ -22,6 +22,7 @@ class Event(models.Model):
     attendees = models.IntegerField(default=0)
     date = models.DateField(("Date"), default=datetime.date.today)
     time = models.TimeField(("Time"), default='00:00')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.event_name

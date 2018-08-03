@@ -30,6 +30,11 @@ def event_list(request):
     events = Event.objects.all()
     return render(request, 'event_list.html', {'events': events})
 
+def user_events(request):
+    events = Event.objects.filter(user=request.user)
+    return render(request, 'user.html', {'events': events})
+
+
 def aboutus(request):
     return render(request, 'about.html')
 
@@ -50,6 +55,7 @@ def index_landing(request):
 
 #Event Show
 def event_detail(request, id):
+    print('in event', id)
     event = Event.objects.get(id=id)
     return render(request, 'event_detail.html', {'event': event})
 
@@ -58,7 +64,9 @@ def event_create(request):
   if request.method == 'POST':
     form = EventForm(request.POST)
     if form.is_valid():
-      event = form.save()
+      event = form.save(commit=False)
+      event.user = request.user
+      event.save()
       return redirect('event_detail', id=event.id)
   else:
     form = EventForm()
@@ -79,7 +87,7 @@ def event_edit(request, id):
 #Event Delete
 def event_delete(request, id):
   Event.objects.get(id=id).delete()
-  return redirect('event_list')
+  return render(request, 'user.html')
  #Event Attendees
 def event_attendees(request, id):
     # event_id = request.GET.get('event_id', None)
