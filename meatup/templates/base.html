@@ -15,7 +15,6 @@
       <a class="py-2" href="/">Let's Meat Up!</a>
 
       {% if user and user.is_authenticated %}
-        <a class="py-2 d-none d-md-inline-block" href="#">Events</a>
         <span class='py-2 d-none d-md-inline-block aslink' href='#'>Welcome, {{ user.username }}</span>
         <a class="py-2 d-none d-md-inline-block" href="/logout">Sign Out</a>
       {% else %}
