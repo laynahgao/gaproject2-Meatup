@@ -4,7 +4,7 @@ html, body {
 
 h1{
   text-align: center;
-  color: black;
+  color: turquoise;
 }
 
 footer {
@@ -33,7 +33,6 @@ p{
 }
 #events{
   text-align: center;
-
 }
  a {
   text-decoration: none;
@@ -61,7 +60,6 @@ p{
 
  }
 
-
 /**
 styles for top navigation bar
 */
@@ -79,15 +77,12 @@ footer {
   background-color: #f8f9fa !important;
   color: #212529;
 }
-.card{
 
-}
 
 
 .main-container {
-  padding: 0rem;
+  padding: 2rem;
   min-height: 80%;
-  background-size: cover;
 }
 .error-message {
   display: none;
@@ -128,7 +123,7 @@ padding-top: 50px;
 .interests{
   text-decoration: underline;
   text-align: center;
-  margin-top: -300px;
+  margin-top: -350px;
   padding-bottom: 300px;
 }
 
@@ -140,21 +135,35 @@ padding-top: 50px;
 text-align: center;
 list-style-type: none;
 
+
+}
 #event_detail{
   padding: 0 20em;
-}
-
-#event_detail a{
-  background: black;
-}
-#event_detail h1{
-  text-align: left;
-}
-#event_detail h5{
-  text-align: left;
 
 }
 
+.event_detail {
+  text-align: center;
+  padding: 0 20em;
+}
+.event_detail h3{
+  color: Black;
+}
+.event-form{
+text-align: center;
+list-style-type: none;
+}
+.event-form button{
+  color: grey;
+background: black;
+}
+.save{
+  color: rgb(12,95,249);
+}
+
+/*.warning {
+  background-image: url('http://capitalspiceblog.com/wp-content/uploads/2011/04/gwu_awesome.png');
+}*/
 h3 {
   text-align: center;
 }
