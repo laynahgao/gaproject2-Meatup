@@ -5,15 +5,12 @@
 <a href="{% url 'user_info' id=user.id%}">Profile</a>
 
 <hr />
-<a href="{% url 'event_create' %}">Create New Event</a>
+<a class='btn btn-primary' href="{% url 'event_create' %}">Create New Event</a>
 
 <h2>Events <a href="{% url 'event_create' %}">(+)</a></h2>
 
-<hr />
 
-
-
-
+{% if events and events.length > 0 %}
 <ul>
     {% for event in events %}
         <li>
@@ -27,6 +24,11 @@
  -->        </li>
     {% endfor %}
 </ul>
+{% else %}
+  <div class='alert alert-primary'>
+    You currently have no events created.
+  </div>
+{% endif %}
 
   <h2>Nearby Restaurants</h2>
 

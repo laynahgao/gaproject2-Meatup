@@ -53,3 +53,8 @@ footer {
   background-color: #f8f9fa !important;
   color: #212529;
 }
+
+
+.main-container {
+  padding: 2rem;
+}
