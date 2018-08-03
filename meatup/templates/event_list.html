@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block content %}]
+<a href="{% url 'user_info' id=user.id%}">Profile</a>
 <h2>Events <a href="{% url 'event_create' %}">(+)</a></h2>
 <ul>
     {% for event in events %}

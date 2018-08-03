@@ -16,7 +16,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
-
+from django.core.mail import send_mail
 # Create your views here.
 
 from .forms import EventForm
@@ -30,11 +30,33 @@ def event_list(request):
     events = Event.objects.all()
     return render(request, 'event_list.html', {'events': events})
 
+def user_events(request):
+    events = Event.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'user.html', {'events': events, 'profile': profile})
+
+
+def aboutus(request):
+    return render(request, 'about.html')
+
 def index_landing(request):
+    user = request.user
+    if user is None:
+      print('user is none')
+      return render(request, 'index.html')
+
+    if user.is_authenticated:
+      print('user is authenticated')
+      return redirect('index')
+
+    # user is available but either is not valid
+    # or has not yet authenticated
+    print('user is not authenticated')
     return render(request, 'index.html')
 
 #Event Show
 def event_detail(request, id):
+    print('in event', id)
     event = Event.objects.get(id=id)
     return render(request, 'event_detail.html', {'event': event})
 
@@ -43,7 +65,9 @@ def event_create(request):
   if request.method == 'POST':
     form = EventForm(request.POST)
     if form.is_valid():
-      event = form.save()
+      event = form.save(commit=False)
+      event.user = request.user
+      event.save()
       return redirect('event_detail', id=event.id)
   else:
     form = EventForm()
@@ -64,7 +88,11 @@ def event_edit(request, id):
 #Event Delete
 def event_delete(request, id):
   Event.objects.get(id=id).delete()
-  return redirect('event_list')
+  profile = Profile.objects.get(user=request.user)
+  return render(request, 'user.html', {'profile': profile})
+
+
+
  #Event Attendees
 def event_attendees(request, id):
     # event_id = request.GET.get('event_id', None)
@@ -85,6 +113,7 @@ def index(request):
 
 
 def signup(request):
+  # email = Profile.objects.get()
   # POST Request for a new user
   if request.method == 'POST':
     # Verify passwords
@@ -95,10 +124,17 @@ def signup(request):
         return render(request, 'signup.html', {'error': 'Username already in use'})
       # If user does not exist, create and login new user then redirect to home
       except User.DoesNotExist:
-        user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-        profile = Profile.objects.create(user=user)
+        user = User.objects.create_user(request.POST['username'], password=request.POST['password1'], email=request.POST['email'])
+        profile = Profile.objects.create(user=user, email=request.POST['email'])
         auth.login(request, user)
         return redirect('index')
+        send_mail(
+                    'Succesfull Signup',
+                    'Hey Welcome to Meatup! Happy Networking!!.',
+                    'gupta.sweet.niti@gmail.com',
+                    ['gupta.sweet.niti@gmail.com'],
+                    fail_silently=False,
+                )
     else:
       return render(request, 'signup.html', {'error': 'Passwords do not match'})
   # GET request for empty sign up form
@@ -106,27 +142,7 @@ def signup(request):
     return render(request, 'signup.html')
 
 def login_view(request):
-
-  if request.method == 'POST':
-    # if post, then authenticate (user submitted username and password)
-    form = LoginForm(request.POST)
-    if form.is_valid():
-        u = form.cleaned_data['username']
-        p = form.cleaned_data['password']
-        user = authenticate(username = u, password = p)
-        if user is not None:
-            if user. is_active:
-                login(request, user)
-                return redirect('user_info', id=user.id)
-            else:
-                print("The account has been disabled.")
-        else:
-            print("The username and/or password is incorrect.")
-  else:
-      form = LoginForm()
-      return render(request, 'login.html', {'form': form})
-
-  if request.method == 'POST':
+    if request.method == 'POST':
         # if post, then authenticate (user submitted username and password)
         form = LoginForm(request.POST)
 
@@ -143,17 +159,15 @@ def login_view(request):
                 auth.login(request, foundUser)
                 return redirect('index')
             else:
-                return render(request, 'login.html', {error: 'Username/password not found'})
+                return render(request, 'login.html', { 'error' : 'invalid', 'username' : e })
 
-  else:
+    else:
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
-
 
 def logout_view(request):
     logout(request)
     return redirect('landing')
-
 
 #### User ####
 

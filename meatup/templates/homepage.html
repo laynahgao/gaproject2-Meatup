@@ -1,54 +1,44 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<nav>
-    <div class="user-info">
-      {% if user.is_authenticated %}
-          Welcome, {{ user.username }}
-          <a href="{% url 'logout' %}">Signout</a>
-      {% else %}
-          <a href="{% url 'login' %}">Signin</a>
-      {% endif %}
+
+<div class='row'>
+  <div class='col-md-9'>
+    <a class='btn btn-primary' href="{% url 'event_create' %}">Create New Event</a>
+    <br><br>
+
+    {% if events.count > 0 %}
+    <table class='table'>
+        {% for event in events %}
+          <tr class='event-row'>
+            <td>
+                <a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
+            </td>
+            <td>
+                At, {{ event.event_location }}
+            </td>
+            <td>
+                On {{ event.date }}, {{ event.time }}
+            </td>
+            <td>
+                Attendees:&nbsp;{{ event.attendees }}
+            </td>
+          </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+      <div class='alert alert-primary'>
+        You currently have no events created.
+      </div>
+    {% endif %}
+  </div>
+  <div class='col-md-3'>
+    <h2>Nearby Restaurants</h2>
+    <div class="widget_wrap" style="width:320px;height:797px;display:inline-block;">
+      <iframe src="https://www.zomato.com/widgets/res_search_widget.php?entity_id=306&entity_type=city&city_id=306&language_id=1&theme=red&hideCitySearch=on&hideResSearch=on&widgetType=small&sort=popularity" style="position:relative;width:100%;height:100%;" border="0" frameborder="0"></iframe>
     </div>
-</nav>
-<a href="{% url 'user_info' id=user.id%}">Profile</a>
-
-<hr />
-<a href="{% url 'event_create' %}">Create New Event</a>
-
-<h2>Events <a href="{% url 'event_create' %}">(+)</a></h2>
-
-<hr />
+  </div>
+</div>
 
 
-
-
-<ul>
-    {% for event in events %}
-        <li>
-            Name:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_name }}</a>
-            Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
-            Date:<a href="{% url 'event_detail' id=event.id %}">{{ event.date }}</a>
-            Time:<a href="{% url 'event_detail' id=event.id %}">{{ event.time }}</a>
-            Attendees:<a href="{% url 'event_detail' id=event.id %}">{{ event.attendees }}</a>
-
-<!--             <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
- -->        </li>
-    {% endfor %}
-</ul>
-
-{% for event in events %}
-  <a href="/{{ event.id }}">
-   <ul>
-    <li>
-      <p><strong>Event Name: </strong>{{ event.event_name }} &nbsp;
-         <strong>Event Owner: </strong>{{ event.owner }} &nbsp;
-         <strong>Event location: </strong>{{ event.event_location }}
-       </p>
-    </li>
-   </ul>
-  </a>
-  <a href="">Load More</a>
- {% endfor %}
 {% endblock %}
-
