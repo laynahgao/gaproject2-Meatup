@@ -115,11 +115,29 @@ padding-top: 50px;
 .center-text {
   text-align: center;
 }
+
 .user-events{
 text-align: center;
 list-style-type: none;
+=======
+#event_detail{
+  padding: 0 20em;
+}
+
+#event_detail a{
+  background: black;
+}
+#event_detail h1{
+  text-align: left;
+}
+#event_detail h5{
+  text-align: left;
+
 }
 
 /*.warning {
-  background-image: url('awesome.png');
+  background-image: url('http://capitalspiceblog.com/wp-content/uploads/2011/04/gwu_awesome.png');
 }*/
+h3 {
+  text-align: center;
+}

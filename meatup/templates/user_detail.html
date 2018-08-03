@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<h2>{{ event.user.username  }} <!-- <a href ="{% url 'event_edit' id=event.id %}">(edit)</a> --> </h2>
+<p>
+<strong>Name:</strong>{{ event.event_name }}<br/>
+<strong>Date:</strong>{{ event.date }}<br/>
+<strong>Time:</strong>{{ event.time }}<br/>
+<strong>Location:</strong>{{ event.event_location}}<br/>
+<strong>Attendees:</strong>{{ event.attendees}}<br/>
+<strong>Description:</strong>{{ event.event_description}}<br/>
+</p>
+ <a class="btn" data-id="{{event.id}}" href="{% url 'event_attendees' id=event.id %}">
+      RSVP{% if event.attendees > 0 %} {% else %} None :( {% endif %}
+    </a>
+
+{% endblock %}
