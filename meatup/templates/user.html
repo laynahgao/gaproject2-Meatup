@@ -23,7 +23,9 @@
 
 </div>
 <div id="events">
-<h2>{{profile.first_name}}'s Events</h2> <a href="{% url 'event_create' %}">New Event</a></h2>
+  <h2> <a href="{% url 'user_events' %}">Show Events</a></h2>
+<a href="{% url 'event_create' %}">New Event</a></h2>
+
 
 
 {% for event in events %}
@@ -32,6 +34,8 @@
            Location:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_location }}</a>
            DateTime:<a href="{% url 'event_detail' id=event.id %}">{{ event.event_datetime }}</a>
           <a href="{% url 'event_delete' id=event.id %}" class="delete">x</a>
+          <a href="{% url 'event_edit' id=event.id %}" class="edit">edit</a>
+
       </li>
 </div>
 
