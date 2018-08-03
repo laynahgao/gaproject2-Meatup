@@ -33,13 +33,16 @@ def event_list(request):
 def index_landing(request):
     user = request.user
     if user is None:
+      print('user is none')
       return render(request, 'index.html')
 
     if user.is_authenticated:
-      redirect('index')
+      print('user is authenticated')
+      return redirect('index')
 
     # user is available but either is not valid
     # or has not yet authenticated
+    print('user is not authenticated')
     return render(request, 'index.html')
 
 #Event Show
