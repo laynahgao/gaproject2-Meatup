@@ -2,6 +2,22 @@
 {% load staticfiles %}
 {% block content %}
 
+<nav>
+    <div class="user-info">
+      {% if user.is_authenticated %}
+          Welcome, {{ user.username }}
+          <a href="{% url 'logout' %}">Signout</a>
+      {% else %}
+          <a href="{% url 'login' %}">Signin</a>
+      {% endif %}
+    </div>
+</nav>
+<a href="{% url 'user_info' id=user.id%}">My Profile</a>
+
+
+
+
+
 <div class='row'>
   <div class='col-md-9'>
     <a class='btn btn-primary' href="{% url 'event_create' %}">Create New Event</a>

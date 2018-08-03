@@ -12,16 +12,17 @@ footer {
   justify-content: center;
 }
 h4{
-  color: blue;
-  border:dashed blue 2px;
+  color: black;
+/*  border:dashed blue 2px;*/
 
 
 }
 #profile{
   text-align: center;
-  outline: solid black 8px;
-  padding-left: 200px;
-  padding-right: 200px;
+
+  text-align: center;
+  font-family: arial;
+  margin-top: 25px;
 
 }
 p{
@@ -34,9 +35,31 @@ p{
 }
 #events{
   text-align: center;
-  outline: solid black 8px;
+
+}
+ a {
+  text-decoration: none;
+  color: rgb(12,95,249);
+ }
+
+ .coverpic {
+  height:100%;
+  width:100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
 }
 
+ .imgtext{
+  color:floralwhite;
+  font-size: 70px;
+  position: absolute;
+  top: 50%;
+  bottom:50%;
+  left:40%;
+  right:50%;
+ }
 
 
 /**
@@ -56,11 +79,15 @@ footer {
   background-color: #f8f9fa !important;
   color: #212529;
 }
+.card{
+
+}
 
 
 .main-container {
-  padding: 2rem;
+  padding: 0rem;
   min-height: 80%;
+  background-size: cover;
 }
 .error-message {
   display: none;
@@ -79,10 +106,40 @@ footer {
 .profile-image {
   width: 200px;
   height: 200px;
+  margin-left: 10px;
+  margin-top: 10px;
+
 }
+.profile-name{
+padding-top: 50px;
+ margin-left: 10px;
+}
+.profile-email{
+padding-top: 50px;
+ margin-left: 10px;
+}
+.profile-interests{
+  text-align: center;
+  margin-top: -50px;
+
+  margin-top: -300px;
+  padding-bottom: 300px;
+}
+.interests{
+  text-decoration: underline;
+  text-align: center;
+  margin-top: -300px;
+  padding-bottom: 300px;
+}
+
 .center-text {
   text-align: center;
 }
+
+.user-events{
+text-align: center;
+list-style-type: none;
+
 #event_detail{
   padding: 0 20em;
 }
@@ -95,11 +152,9 @@ footer {
 }
 #event_detail h5{
   text-align: left;
+
 }
 
-/*.warning {
-  background-image: url('http://capitalspiceblog.com/wp-content/uploads/2011/04/gwu_awesome.png');
-}*/
 h3 {
   text-align: center;
 }
