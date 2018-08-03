@@ -47,7 +47,7 @@ styles for top navigation bar
   background-color: black;
 }
 
-.site-header a {
+.site-header a, .site-header .aslink {
   color: #999;
   transition: ease-in-out color .15s;
 }
